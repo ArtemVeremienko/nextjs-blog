@@ -3,11 +3,17 @@ import Image from 'next/image'
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
+import { ReactNode } from 'react'
 
-const name = 'Artem Veremiienko'
-export const siteTitle = 'Next.js Sample Website'
+const NAME = 'Artem Veremiienko'
+export const SITE_TITLE = 'Next.js Sample Website'
 
-export default function Layout({ children, home }) {
+interface LayoutProps {
+  children: ReactNode
+  home?: boolean
+}
+
+export default function Layout({ children, home = false }: LayoutProps) {
   return (
     <div className={styles.container}>
       <Head>
@@ -19,10 +25,10 @@ export default function Layout({ children, home }) {
         <meta
           property="og:image"
           content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle
+            SITE_TITLE
           )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
         />
-        <meta name="og:title" content={siteTitle} />
+        <meta name="og:title" content={SITE_TITLE} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
@@ -36,7 +42,7 @@ export default function Layout({ children, home }) {
               width={144}
               alt=""
             />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
+            <h1 className={utilStyles.heading2Xl}>{NAME}</h1>
           </>
         ) : (
           <>
@@ -52,7 +58,7 @@ export default function Layout({ children, home }) {
             </Link>
             <h2 className={utilStyles.headingLg}>
               <Link href="/" className={utilStyles.colorInherit}>
-                {name}
+                {NAME}
               </Link>
             </h2>
           </>

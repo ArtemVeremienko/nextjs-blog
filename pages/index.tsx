@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import Layout, { siteTitle } from '../components/layout'
+import Layout, { SITE_TITLE } from '../components/layout'
 import { getSortedPostsData } from '../lib/posts'
 import utilStyles from '../styles/utils.module.css'
 import Date from '../components/date'
+import { GetStaticProps } from 'next'
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const allPostsData = getSortedPostsData()
 
   return {
@@ -15,11 +16,21 @@ export async function getStaticProps() {
   }
 }
 
+interface PostsData {
+  date: string
+  title: string
+  id: string
+}
+
+interface HomeProps {
+  allPostsData: PostsData[]
+}
+
 export default function Home({ allPostsData }) {
   return (
     <Layout home>
       <Head>
-        <title>{siteTitle}</title>
+        <title>{SITE_TITLE}</title>
       </Head>
       <section className={utilStyles.headingMd}>
         <p>
