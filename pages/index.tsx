@@ -30,6 +30,8 @@ export default function Home({ allPostsData }) {
   return (
     <Layout home>
       <Head>
+        <meta name="google" content="nositelinkssearchbox" key="sitelinks" />
+        <meta name="google" content="notranslate" key="notranslate" />
         <title>{SITE_TITLE}</title>
       </Head>
       <section className={utilStyles.headingMd}>
