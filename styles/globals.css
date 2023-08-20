@@ -1,7 +1,7 @@
-@tailwind base;
-@tailwind components;
+/* @tailwind base; */
+/* @tailwind components; */
+/* @tailwind variants; */
 @tailwind utilities;
-@tailwind variants;
 
 html,
 body {
